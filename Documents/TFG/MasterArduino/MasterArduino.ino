@@ -24,8 +24,7 @@ void loop()
   int temp = dht.readTemperature();
   Serial.println(temp);
   
-  // Master sends decimal 65 to slave
-  //test variable recieves any data sent by the slave to the master
+ 
   char test=SPI.transfer(temp);
   delay(500);
   digitalWrite(slaveSelectPin, HIGH);
