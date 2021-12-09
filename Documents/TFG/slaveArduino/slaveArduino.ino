@@ -8,13 +8,13 @@ void setup() {
   pinMode(MISO,OUTPUT);
 
   //SPI slave mode
-  SPCR = (1<<SPE)|(1<<SPIE); //enable spi module and interrupt
-  sei(); //global interrupt enable
+  SPCR = (1<<SPE)|(1<<SPIE);
+  sei(); 
 }
 
 ISR (SPI_STC_vect)
 {
-  s_recv= SPDR; //data received from master is stored in SPDR
+  s_recv= SPDR;
   flag=1;
 }
 
@@ -24,8 +24,7 @@ void loop() {
   Serial.println(s_recv);
   if(flag)
   {
-    SPDR = 'F'; //send data back to master
-  }
+    SPDR = 'F';
   delay(500);
 
 }
